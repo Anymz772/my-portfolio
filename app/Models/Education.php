@@ -5,35 +5,31 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Project extends Model
+class Education extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'portfolio_id',
-        'title',
+        'institution',
+        'degree',
+        'field',
+        'start_date',
+        'end_date',
         'description',
-        'image',
-        'live_url',
-        'source_url',
-        'featured',
         'sort_order',
     ];
 
     protected function casts(): array
     {
         return [
-            'featured' => 'boolean',
+            'start_date' => 'date',
+            'end_date' => 'date',
         ];
     }
 
     public function portfolio()
     {
         return $this->belongsTo(Portfolio::class);
-    }
-
-    public function technologies()
-    {
-        return $this->hasMany(ProjectTechnology::class)->orderBy('sort_order');
     }
 }

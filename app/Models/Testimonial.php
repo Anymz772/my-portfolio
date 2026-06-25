@@ -5,27 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ContactMessage extends Model
+class Testimonial extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'portfolio_id',
         'name',
-        'email',
-        'subject',
-        'message',
-        'is_read',
-        'ip_address',
-        'user_agent',
+        'position',
+        'company',
+        'content',
+        'avatar',
+        'sort_order',
     ];
-
-    protected function casts(): array
-    {
-        return [
-            'is_read' => 'boolean',
-        ];
-    }
 
     public function portfolio()
     {

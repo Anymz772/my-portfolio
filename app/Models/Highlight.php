@@ -5,21 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Skill extends Model
+class Highlight extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'portfolio_id',
-        'name',
-        'category',
-        'level',
-        'icon',
+        'about_section_id',
+        'text',
         'sort_order',
     ];
 
-    public function portfolio()
+    public function aboutSection()
     {
-        return $this->belongsTo(Portfolio::class);
+        return $this->belongsTo(AboutSection::class);
     }
 }

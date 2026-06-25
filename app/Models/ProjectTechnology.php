@@ -5,21 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Skill extends Model
+class ProjectTechnology extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'portfolio_id',
+        'project_id',
         'name',
-        'category',
-        'level',
-        'icon',
         'sort_order',
     ];
 
-    public function portfolio()
+    public function project()
     {
-        return $this->belongsTo(Portfolio::class);
+        return $this->belongsTo(Project::class);
     }
 }

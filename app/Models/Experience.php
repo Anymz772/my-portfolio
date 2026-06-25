@@ -2,18 +2,41 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Experience extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
-        'company', 'role', 'location', 'start_date', 'end_date',
-        'description', 'sort_order', 'is_active',
+        'portfolio_id',
+        'company',
+        'position',
+        'location',
+        'start_date',
+        'end_date',
+        'current',
+        'description',
+        'sort_order',
     ];
 
-    protected $casts = [
-        'start_date' => 'date',
-        'end_date' => 'date',
-        'is_active' => 'boolean',
-    ];
+    protected function casts(): array
+    {
+        return [
+            'start_date' => 'date',
+            'end_date' => 'date',
+            'current' => 'boolean',
+        ];
+    }
+
+    public function portfolio()
+    {
+        return $this->belongsTo(Portfolio::class);
+    }
+
+    public function highlights()
+    {
+        return $this->hasMany(ExperienceHighlight::class)->orderBy('sort_order');
+    }
 }

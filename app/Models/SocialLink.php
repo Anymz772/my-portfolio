@@ -5,27 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ContactMessage extends Model
+class SocialLink extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'portfolio_id',
-        'name',
-        'email',
-        'subject',
-        'message',
-        'is_read',
-        'ip_address',
-        'user_agent',
+        'platform',
+        'url',
+        'icon',
+        'sort_order',
     ];
-
-    protected function casts(): array
-    {
-        return [
-            'is_read' => 'boolean',
-        ];
-    }
 
     public function portfolio()
     {

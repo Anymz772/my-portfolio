@@ -5,35 +5,27 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Project extends Model
+class PortfolioSection extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'portfolio_id',
-        'title',
-        'description',
-        'image',
-        'live_url',
-        'source_url',
-        'featured',
+        'section_name',
+        'enabled',
+        'custom_title',
         'sort_order',
     ];
 
     protected function casts(): array
     {
         return [
-            'featured' => 'boolean',
+            'enabled' => 'boolean',
         ];
     }
 
     public function portfolio()
     {
         return $this->belongsTo(Portfolio::class);
-    }
-
-    public function technologies()
-    {
-        return $this->hasMany(ProjectTechnology::class)->orderBy('sort_order');
     }
 }

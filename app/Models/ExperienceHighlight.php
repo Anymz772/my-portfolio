@@ -5,21 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Skill extends Model
+class ExperienceHighlight extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'portfolio_id',
-        'name',
-        'category',
-        'level',
-        'icon',
+        'experience_id',
+        'text',
         'sort_order',
     ];
 
-    public function portfolio()
+    public function experience()
     {
-        return $this->belongsTo(Portfolio::class);
+        return $this->belongsTo(Experience::class);
     }
 }

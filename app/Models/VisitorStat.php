@@ -5,25 +5,35 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ContactMessage extends Model
+class VisitorStat extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'portfolio_id',
-        'name',
-        'email',
-        'subject',
-        'message',
-        'is_read',
+        'session_id',
         'ip_address',
         'user_agent',
+        'referrer',
+        'path',
+        'country',
+        'country_code',
+        'region',
+        'city',
+        'latitude',
+        'longitude',
+        'browser',
+        'platform',
+        'device_type',
+        'visited_at',
     ];
 
     protected function casts(): array
     {
         return [
-            'is_read' => 'boolean',
+            'visited_at' => 'date',
+            'latitude' => 'decimal:8',
+            'longitude' => 'decimal:8',
         ];
     }
 
